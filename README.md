@@ -10,3 +10,6 @@ For running openmp programs hit commands:-
 g++ -fopenmp filename.cpp
   
 ./a.out
+
+## BI Practicals
+[YouTube Playlist](https://youtube.com/playlist?list=PLf2Wj8X3RbBRy-zlDkrbMPuFbb6peTeTG)
