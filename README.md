@@ -20,7 +20,7 @@ If this repo helped you, do star it! :)
 %%cu
 #include <iostream>
 int main(){
-  std::cout << "Welcome To GeeksforGeeks\n";
+  std::cout << "Hello World\n";
   return 0;
 }
 ```
