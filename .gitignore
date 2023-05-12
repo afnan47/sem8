@@ -1,2 +1,4 @@
 .vscode/
 colorization_release_v2.caffemodel
+.gitignore
+Codes/HPC/a.exe
