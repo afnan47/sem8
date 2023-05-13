@@ -6,8 +6,8 @@ If this repo helped you, do star it! :)
 
 ## HPC Practicals
 ### For running openmp programs hit commands:- 
-1. `g++ filename.cpp -fopenmp`
-2. `./a.out`
+C++ : `g++ filename.cpp -fopenmp` and `./a.out`
+C : `gcc filename.cpp -fopenmp` and `./a.out`
 
 ### To run CUDA programs on Collab, follow these steps:
 1. [Go to Google Collab](https://colab.research.google.com)
