@@ -1,9 +1,5 @@
 # Semester 8
 SPPU Computer Engineering 2019 Pattern Final Year-Sem 2 Assignments.
-
-If this repo helped you, do star it! :)
-
-
 ## HPC Practicals
 ### For running openmp programs hit commands:- 
 C++ : `g++ filename.cpp -fopenmp` and `./a.out`
@@ -30,3 +26,6 @@ int main(){
 [Click here for detailed steps](https://www.geeksforgeeks.org/how-to-run-cuda-c-c-on-jupyter-notebook-in-google-colaboratory/)
 ## BI Practicals
 [YouTube Playlist](https://youtube.com/playlist?list=PLf2Wj8X3RbBRy-zlDkrbMPuFbb6peTeTG)
+
+
+If this repo helped you, do star it! :)
