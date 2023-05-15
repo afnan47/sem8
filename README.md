@@ -3,6 +3,7 @@ SPPU Computer Engineering 2019 Pattern Final Year-Sem 2 Assignments.
 ## HPC Practicals
 ### For running openmp programs hit commands:- 
 C++ : `g++ filename.cpp -fopenmp` and `./a.out`
+
 C : `gcc filename.cpp -fopenmp` and `./a.out`
 
 ### To run CUDA programs on Collab, follow these steps:
