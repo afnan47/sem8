@@ -1,5 +1,6 @@
 # To run:
 # python colorize.py --image | -i relative_image_path
+# Example: python colorize.py -i ./images/charlie.jpg
 
 # Import Modules
 import numpy as np
@@ -13,7 +14,7 @@ import os
  1. colorization_deploy_v2_prototxt.
  2. pts_in_hull.npy.
  3. colorization_release_v2.caffemodel [https://www.dropbox.com/s/dx0qvhhp5hbcx7z/colorization_release_v2.caffemodel?dl=1]
-
+ Place the caffe model in the colorize folder.
 '''
 
 # Load Files
