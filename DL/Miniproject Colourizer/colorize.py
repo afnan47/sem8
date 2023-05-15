@@ -1,4 +1,5 @@
-# To run:
+# First Run: pip install -r requirements.txt
+# To run code:
 # python colorize.py --image | -i relative_image_path
 # Example: python colorize.py -i ./images/charlie.jpg
 
