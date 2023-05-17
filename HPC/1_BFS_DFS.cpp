@@ -71,7 +71,6 @@ int main(){
         
     */
 
-    // Run Parallel BFS
     cout << "Parallel BFS: ";
     pBFS(tree);
     cout << "\n";
