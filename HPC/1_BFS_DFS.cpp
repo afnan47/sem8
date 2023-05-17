@@ -70,14 +70,11 @@ int main(){
         4     5   6    7
         
     */
-   
+
     // Run Parallel BFS
     cout << "Parallel BFS: ";
     pBFS(tree);
     cout << "\n";
     cout << "Parallel DFS: ";
     pDFS(tree);
-
-    
 }
-
