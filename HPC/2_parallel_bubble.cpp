@@ -1,7 +1,7 @@
 #include<iostream>
 #include<omp.h>
-using namespace std;
 
+using namespace std;
 
 void bubble(int array[], int n){
     for (int i = 0; i < n - 1; i++){
@@ -12,41 +12,59 @@ void bubble(int array[], int n){
 }
 
 void pBubble(int array[], int n){
-    int i,j;
-    #pragma omp parallel for shared(array, n) private(i, j)
-    for (i = 0; i < n - 1; i++) {
-        for (j = 0; j < n - i - 1; j++) {
-            if (array[j] > array[j + 1]) swap(array[j], array[j + 1]);
+    //Sort odd indexed numbers
+    for(int i = 0; i < n; ++i){    
+        #pragma omp for
+        for (int j = 1; j < n; j += 2){
+        if (array[j] < array[j-1])
+        {
+          swap(array[j], array[j - 1]);
         }
     }
+
+    // Synchronize
+    #pragma omp barrier
+
+    //Sort even indexed numbers
+    #pragma omp for
+    for (int j = 2; j < n; j += 2){
+      if (array[j] < array[j-1])
+      {
+        swap(array[j], array[j - 1]);
+      }
+    }
+  }
+}
+
+void printArray(int arr[], int n){
+    for(int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << "\n";
 }
 
 int main(){
-    int n = 10000;
-    int a[n];
+    // Set up variables
+    int n = 10;
+    int arr[n];
+    int brr[n];
     double start_time, end_time;
 
-    // Create an array of n numbers, with numbers from n to 1
-    for(int i = 0, j = n; i < n; i++, j--) a[i] = j;
+    // Construct the array
+    for(int i = 0, j = n; i < n; i++, j--) arr[i] = j;
     
-    // Create a copy 
-    int b[n];
-    for(int i = 0; i < n; i++) b[i] = a[i];
-
-    // Measure Sequential Time
-    start_time = omp_get_wtime(); 
-    bubble(a,n);
-    end_time = omp_get_wtime(); 
-    cout << "Time taken by sequential algorithm: " << end_time - start_time << " seconds\n";
-
-    //Measure Parallel time
-    start_time = omp_get_wtime(); 
-    pBubble(b,n);
-    end_time = omp_get_wtime(); 
-    cout << "Time taken by parallel algorithm: " << end_time - start_time << " seconds";
+    // Sequential time
+    start_time = omp_get_wtime();
+    bubble(arr, n);
+    end_time = omp_get_wtime();     
+    cout << "Sequential Bubble Sort took : " << end_time - start_time << " seconds.\n";
+    printArray(arr, n);
     
-    /*
-    The parallel bubble sort algorithm does not do better than the sequential algorithm. In fact, it is actually slower in most cases. This is because the bubble sort algorithm is a very simple algorithm that does not lend itself well to parallelism. The overhead of synchronizing the threads and dividing the array into smaller parts outweighs the benefits of parallel execution.
-    */
-    return 0;
-}
+    // Reset the array
+    for(int i = 0, j = n; i < n; i++, j--) arr[i] = j;
+    
+    // Parallel time
+    start_time = omp_get_wtime();
+    pBubble(arr, n);
+    end_time = omp_get_wtime();     
+    cout << "Parallel Bubble Sort took : " << end_time - start_time << " seconds.\n";
+    printArray(arr, n);
+}   
