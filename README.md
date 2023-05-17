@@ -2,7 +2,7 @@
 SPPU Computer Engineering 2019 Pattern Final Year-Sem 2 Assignments. If this repo helped you, do star it! :)
 
 ## HPC Practicals
-### For running openmp programs hit commands:- 
+### For running openmp programs run commands:- 
 C++ : `g++ filename.cpp -fopenmp` and `./a.out`
 
 C : `gcc filename.cpp -fopenmp` and `./a.out`
