@@ -10,9 +10,7 @@ void merge(int arr[], int low, int mid, int high) {
 
     int left[n1];
     int right[n2];
-    for(int i = 0; i < n1; i++) left[i] = 0;
-    for(int i = 0; i < n2; i++) right[i] = 0;
-
+    
     // Copy all left elements
     for (int i = 0; i < n1; i++) left[i] = arr[low + i];
     
@@ -82,7 +80,7 @@ int main() {
     int arr[n];
     double start_time, end_time;
 
-    // Create an array of n numbers, with digits from n to 1 in descending order
+    // Create an array with numbers starting from n to 1.
     for(int i = 0, j = n; i < n; i++, j--) arr[i] = j;
     
     // Measure Sequential Time
