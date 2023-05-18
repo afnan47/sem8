@@ -70,13 +70,18 @@ int main() {
     
     // Copy values from A to X and B to Y
     cudaMemcpy(Y, B, matrixBytes, cudaMemcpyHostToDevice);
+    
+    // Threads per CTA dimension
+    int THREADS = 2;
+    // Blocks per grid dimension (assumes THREADS divides N evenly)
+    int BLOCKS = N / THREADS;
 
-    // Specify number of threads
-    dim3 threadsPerBlock(blockSize, blockSize);
-    // Set number of grids per block
-    dim3 blocksPerGrid((N + blockSize - 1) / blockSize, (N + blockSize - 1) / blockSize);
+    // Use dim3 structs for block  and grid dimensions
+    dim3 threads(THREADS, THREADS);
+    dim3 blocks(BLOCKS, BLOCKS);
 
-    multiply<<<blocksPerGrid, threadsPerBlock>>>(X, Y, Z, N);
+    // Launch kernel
+    multiply<<<blocks, threads>>>(X, Y, Z, N);
 
     cudaMemcpy(C, Z, matrixBytes, cudaMemcpyDeviceToHost);
     cout << "Multiplication of matrix A and B: \n";
