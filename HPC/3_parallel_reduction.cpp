@@ -4,60 +4,48 @@
   Please use Linux Environment.[You can try using "windows subsystem for linux"]
 */
 
-#include <iostream>
-#include <vector>
-#include <omp.h>
-#include <climits>
+#include<iostream>
+#include<omp.h>
 
 using namespace std;
 
-void min_reduction(int* arr, int n){
-  int min_value = INT_MAX;
-  #pragma omp parallel for reduction(min: min_value)
-  for (int i = 0; i < n; i++){
-    if (arr[i] < min_value){
-      min_value = arr[i];
+int minval(int arr[], int n){
+  int minval = arr[0];
+  #pragma omp parallel for reduction(min : minval)
+    for(int i = 0; i < n; i++){
+      if(arr[i] < minval) minval = arr[i];
     }
-  }
-  cout << "Minimum value: " << min_value << endl;
+  return minval;
 }
 
-void max_reduction(int* arr, int n){
-  int max_value = INT_MIN;
-  #pragma omp parallel for reduction(max: max_value)
-  for (int i = 0; i < n; i++){
-    if (arr[i] > max_value) {
-      max_value = arr[i];
+int maxval(int arr[], int n){
+  int maxval = arr[0];
+  #pragma omp parallel for reduction(max : maxval)
+    for(int i = 0; i < n; i++){
+      if(arr[i] > maxval) maxval = arr[i];
     }
-  }
-  cout << "Maximum value: " << max_value << endl;
+  return maxval;
 }
 
-void sum_reduction(int* arr, int n){
-  int sum = 0;
-   #pragma omp parallel for reduction(+: sum)
-   for (int i = 0; i < n; i++){
-    sum += arr[i];
-  }
-  cout << "Sum: " << sum << endl;
+int sum(int arr[], int n){
+  int sum = arr[0];
+  #pragma omp parallel for reduction(+ : sum)
+    for(int i = 0; i < n; i++){
+      sum += arr[i];
+    }
+  return sum;
 }
 
-void average_reduction(int* arr, int n){
-  int sum = 0;
-  #pragma omp parallel for reduction(+: sum)
-  for (int i = 0; i < n; i++){
-    sum += arr[i];
-  }
-  cout << "Average: " << (double)sum / n << endl;
+int average(int arr[], int n){
+  return (double)sum(arr, n) / n;
 }
 
 int main(){
-  int arr[] = {5,2,9,1,7,6,8,3,4};
-  int n = 9;
-  //Run ops
-  min_reduction(arr, n);
-  max_reduction(arr, n);
-  sum_reduction(arr, n);
-  average_reduction(arr, n);
+  int n = 5;
+  int arr[] = {1,2,3,4,5};
+  cout << "The minimum value is: " << minval(arr, n) << '\n';
+  cout << "The maximum value is: " << maxval(arr, n) << '\n';
+  cout << "The summation is: " << sum(arr, n) << '\n';
+  cout << "The average is: " << average(arr, n) << '\n';
   return 0;
 }
