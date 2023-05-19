@@ -7,7 +7,7 @@ C++ : `g++ filename.cpp -fopenmp` and `./a.out`
 
 C : `gcc filename.cpp -fopenmp` and `./a.out`
 
-If you get errors try running: `mingw-get upgrade --recursive "gcc<4.7.*" "gcc-g++<4.7.*"`.
+If you get errors try running: `mingw-get upgrade --recursive "gcc<4.7.*" "gcc-g++<4.7.*"`
 
 Make sure MinGW is installed.
 
