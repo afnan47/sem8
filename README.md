@@ -9,7 +9,7 @@ C : `gcc filename.cpp -fopenmp` and `./a.out`
 
 If you get errors try running: `mingw-get upgrade --recursive "gcc<4.7.*" "gcc-g++<4.7.*"`
 
-Make sure MinGW is installed.
+[Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
 
 
 ### To run CUDA programs on Collab, follow these steps:
