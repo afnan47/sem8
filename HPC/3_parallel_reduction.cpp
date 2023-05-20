@@ -8,7 +8,6 @@
 #include<omp.h>
 
 using namespace std;
-
 int minval(int arr[], int n){
   int minval = arr[0];
   #pragma omp parallel for reduction(min : minval)
