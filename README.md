@@ -3,13 +3,11 @@ SPPU Computer Engineering 2019 Pattern Final Year-Sem 2 Assignments. If this rep
 
 ## HPC Practicals
 ### For running openmp programs run commands:- 
-C++ : `g++ filename.cpp -fopenmp` and `./a.out`
-
-C : `gcc filename.cpp -fopenmp` and `./a.out`
-
-If you get errors try running: `mingw-get upgrade --recursive "gcc<4.7.*" "gcc-g++<4.7.*"`
-
-[Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
+`g++ filename.cpp -fopenmp` and `./a.exe` [for windows users] or `./a.out` [for linux users]
+ 
+ [Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
+ 
+If you still get errors try running: `mingw-get upgrade --recursive "gcc<4.7.*" "gcc-g++<4.7.*"`
 
 
 ### To run CUDA programs on Collab, follow these steps:
