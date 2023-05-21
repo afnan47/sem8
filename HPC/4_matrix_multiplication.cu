@@ -1,5 +1,4 @@
-// %%cu
-// Uncomment the above line when using this on collab
+%%cu
 #include <iostream>
 using namespace std;
 
