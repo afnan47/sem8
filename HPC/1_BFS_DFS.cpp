@@ -1,3 +1,8 @@
+/*
+This code only makes the use of pragma keywords and is not truly parallel.
+If you find a correct parallel code for this assignment give a PR.
+*/
+
 #include<iostream>
 #include<omp.h>
 #include<stack>
