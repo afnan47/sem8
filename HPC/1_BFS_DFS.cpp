@@ -1,89 +1,97 @@
-/*
-This code only makes the use of pragma keywords and is not truly parallel.
-If you find a correct parallel code for this assignment give a PR.
-*/
-
-#include<iostream>
-#include<omp.h>
-#include<stack>
-#include<queue>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <omp.h>
 
 using namespace std;
 
-class TreeNode{
-    public:
-    int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode(int x){
-        val = x;
-        left = NULL;
-        right = NULL;
+// Graph class representing the adjacency list
+class Graph {
+    int V;  // Number of vertices
+    vector<vector<int>> adj;  // Adjacency list
+
+public:
+    Graph(int V) : V(V), adj(V) {}
+
+    // Add an edge to the graph
+    void addEdge(int v, int w) {
+        adj[v].push_back(w);
+    }
+
+    // Parallel Depth-First Search
+    void parallelDFS(int startVertex) {
+        vector<bool> visited(V, false);
+        parallelDFSUtil(startVertex, visited);
+    }
+
+    // Parallel DFS utility function
+    void parallelDFSUtil(int v, vector<bool>& visited) {
+        visited[v] = true;
+        cout << v << " ";
+
+        #pragma omp parallel for
+        for (int i = 0; i < adj[v].size(); ++i) {
+            int n = adj[v][i];
+            if (!visited[n])
+                parallelDFSUtil(n, visited);
+        }
+    }
+
+    // Parallel Breadth-First Search
+    void parallelBFS(int startVertex) {
+        vector<bool> visited(V, false);
+        queue<int> q;
+
+        visited[startVertex] = true;
+        q.push(startVertex);
+
+        while (!q.empty()) {
+            int v = q.front();
+            q.pop();
+            cout << v << " ";
+
+            #pragma omp parallel for
+            for (int i = 0; i < adj[v].size(); ++i) {
+                int n = adj[v][i];
+                if (!visited[n]) {
+                    visited[n] = true;
+                    q.push(n);
+                }
+            }
+        }
     }
 };
 
-void pBFS(TreeNode* root){
-    queue<TreeNode*> q;
-    q.push(root);
-    while(!q.empty()){
-        int qs = q.size();
-        #pragma omp parallel for
-        for(int i = 0; i < qs; i++){
-            TreeNode* node;
-            #pragma omp critical
-            {
-                node = q.front();
-                cout << node->val << " ";
-                q.pop();
-                if(node->left) q.push(node->left);
-                if(node->right) q.push(node->right);
-            }
-        }
-    }
-}
-
-void pDFS(TreeNode* root){
-    stack<TreeNode*> s;
-    s.push(root);
-    while(!s.empty()){
-        int ss = s.size();
-        #pragma omp parallel for
-        for(int i = 0; i < ss; i++){
-            TreeNode* node;
-            #pragma omp critical
-            {
-                node = s.top();
-                cout << node->val << " ";
-                s.pop();
-                if(node->right) s.push(node->right);
-                if(node->left) s.push(node->left);
-            }
-        }
-    }
-}
-
-
-int main(){
-    // Construct Tree
-    TreeNode* tree = new TreeNode(1);
-    tree->left = new TreeNode(2);
-    tree->right = new TreeNode(3); 
-    tree->left->left = new TreeNode(4);
-    tree->left->right = new TreeNode(5);
-    tree->right->left = new TreeNode(6);
-    tree->right->right = new TreeNode(7);
-
+int main() {
+    // Create a graph
+    Graph g(7);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 3);
+    g.addEdge(1, 4);
+    g.addEdge(2, 5);
+    g.addEdge(2, 6);
+    
     /*
-    Our Tree Looks like this:
-                1
-            2       3
-        4     5   6    7
-        
+        0 -------->1
+        |         / \
+        |        /   \
+        |       /     \
+        v       v       v
+        2 ----> 3       4
+        |      |
+        |      |
+        v      v
+        5      6
     */
 
-    cout << "Parallel BFS: ";
-    pBFS(tree);
-    cout << "\n";
-    cout << "Parallel DFS: ";
-    pDFS(tree);
+    cout << "Depth-First Search (DFS): ";
+    g.parallelDFS(0);
+    cout << endl;
+
+    cout << "Breadth-First Search (BFS): ";
+    g.parallelBFS(0);
+    cout << endl;
+
+    return 0;
 }
