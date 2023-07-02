@@ -29,4 +29,7 @@ int main(){
 ## BI Practicals
 [YouTube Playlist](https://youtube.com/playlist?list=PLf2Wj8X3RbBRy-zlDkrbMPuFbb6peTeTG)
 
+## Miniprojects
+[HPC](https://github.com/afnan47/Quicksort-Using-MPI)
+Rest of the subject projects are in this repo.
 
