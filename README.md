@@ -32,6 +32,8 @@ int main(){
 
 ## Miniprojects
 [HPC](https://github.com/afnan47/Quicksort-Using-MPI)
+
 [Data Science Hons](https://github.com/afnan47/APReF-using-python3)
+
 [Rest of the subject projects are within this repo itself](https://github.com/afnan47/sem8)
 
