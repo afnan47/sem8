@@ -4,9 +4,13 @@ SPPU Computer Engineering 2019 Pattern Final Year-Sem 2 Lab Assignments.
 
 ## HPC Practicals
 ### For running openmp programs run commands:- 
-`g++ filename.cpp -fopenmp` and `./a.exe` [for windows users] or `./a.out` [for linux users]
+Note: [Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
+
+Compile: `g++ path/to/file/file_name.cpp -fopenmp`
+
+Execute: `./a.out` [for linux users] or `./a.exe` [for windows users]
  
- [Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
+ 
 
 ### To run CUDA programs on Collab, follow these steps:
 1. [Go to Google Collab](https://colab.research.google.com)
