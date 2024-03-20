@@ -4,11 +4,11 @@ SPPU Computer Engineering 2019 Pattern Final Year-Sem 2 Lab Assignments.
 
 ## HPC Practicals
 ### For running openmp programs run commands:- 
-Note: [Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
+Note for Windows Users: [Make sure MinGW is installed with pthreads](https://stackoverflow.com/a/39256203).
 
 Compile: `g++ path/to/file/file_name.cpp -fopenmp`
 
-Execute: `./a.out` [for linux users] or `./a.exe` [for windows users]
+Execute: `./a.out` [Linux] or `./a.exe` [Windows]
  
  
 
