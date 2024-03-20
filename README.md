@@ -12,7 +12,7 @@ Execute: `./a.out` [Linux] or `./a.exe` [Windows]
  
  
 
-### To run CUDA programs on Collab, follow these steps:
+### Steps to run CUDA programs on Google Collab:
 1. [Go to Google Collab](https://colab.research.google.com)
 2. Create a new Notebook(.ipynb file).
 3. Click on Runtime and change runtime type to GPU.
@@ -30,7 +30,7 @@ int main(){
 
 7. Remember to add `%%cu` before writing the C++ code for every CUDA program. CUDA is now set.
 
-[Click here for detailed steps](https://www.geeksforgeeks.org/how-to-run-cuda-c-c-on-jupyter-notebook-in-google-colaboratory/)
+[Still getting errors? Click here for detailed steps](https://www.geeksforgeeks.org/how-to-run-cuda-c-c-on-jupyter-notebook-in-google-colaboratory/)
 ## BI Practicals
 [YouTube Playlist](https://youtube.com/playlist?list=PLf2Wj8X3RbBRy-zlDkrbMPuFbb6peTeTG)
 
